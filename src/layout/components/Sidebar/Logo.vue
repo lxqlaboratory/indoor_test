@@ -19,7 +19,7 @@ export default {
   },
   data() {
     return {
-      title: '天一旅游同业中心'
+      title: '框架'
     }
   }
 }

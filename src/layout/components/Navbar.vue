@@ -2,22 +2,21 @@
   <div class="navbar">
     <breadcrumb class="breadcrumb-container" />
     <div class="right-menu">
-      <el-dropdown class="avatar-container"  style="position: absolute;right: 1%;top:-2px;float: right" trigger="click">
+      <el-dropdown class="avatar-container"  style="position: absolute;right: 2%;top:-2px;float: right" trigger="click">
         <div class="avatar-wrapper">
-          <span style="font-size: 20px;color: black"></span>
+          <span style="font-size: 15px;color: black" @click="logout">退出</span>
         </div>
-        <el-dropdown-menu slot="dropdown" class="user-dropdown" style="margin-top: 0px">
+        <!-- <el-dropdown-menu slot="dropdown" class="user-dropdown" style="margin-top: 0px">
           <el-dropdown-item divided>
             <span style="display:block;" @click="logout">Log Out</span>
           </el-dropdown-item>
-        </el-dropdown-menu>
+        </el-dropdown-menu> -->
       </el-dropdown>
     </div>
   </div>
 </template>
 
 <script>
-  import { initMenu } from '@/api/login'
 import Breadcrumb from '@/components/Breadcrumb'
 export default {
 
@@ -50,7 +49,7 @@ export default {
   height: 50px;
   overflow: hidden;
   position: relative;
-  background: #fff;
+  background: rgb(113, 128, 141);
   box-shadow: 0 1px 4px rgba(0,21,41,.08);
 
   .hamburger-container {
@@ -92,7 +91,7 @@ export default {
         transition: background .3s;
 
         &:hover {
-          background: rgba(0, 0, 0, .025)
+          background: rgba(0, 0, 0, 0.877)
         }
       }
     }

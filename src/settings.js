@@ -1,6 +1,6 @@
 module.exports = {
 
-  title: '天一旅游同业中心',
+  title: '框架',
 
   /**
    * @type {boolean} true | false
