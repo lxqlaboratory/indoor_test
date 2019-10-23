@@ -42,17 +42,17 @@ export const constantRoutes = [
     component: () => import('@/views/404'),
     hidden: true
   },
-  // {
-  //   path: '/dashboard',
-  //   component: Layout,
-  //   redirect: '/dashboard/dashboard',
-  //   children: [{
-  //     path: 'dashboard',
-  //     name: 'Dashboard',
-  //     component: () => import('@/views/dashboard/index'),
-  //     meta: { title: '系统通知', icon: 'dashboard', roles: ['100'] }
-  //   }]
-  // },
+  {
+    path: '/dashboard',
+    component: Layout,
+    redirect: '/dashboard/dashboard',
+    children: [{
+      path: 'dashboard',
+      name: 'Dashboard',
+      component: () => import('@/views/dashboard/index'),
+      meta: { title: '系统通知', icon: 'dashboard', roles: ['100'] }
+    }]
+  },
   {
     path: '/personInfo',
     component: Layout,
@@ -75,17 +75,6 @@ export const constantRoutes = [
         meta: { title: '修改密码', icon: 'password', roles: ['100'] }
       }
     ]
-  },
-  {
-    path: '/reTrack',
-    component: Layout,
-    meta: { icon: 'home' },
-    children: [{
-      path: 'reTrack',
-      name: 'reTrack',
-      component: () => import('@/views/reTrack/index'),
-      meta: { title: '实时监控', icon: 'eye-open' }
-    }]
   },
 
   { path: '/', redirect: '/login', hidden: true },

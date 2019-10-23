@@ -27,10 +27,6 @@ import { LMap, LTileLayer, LMarker, LImageOverlay, LPopup, LPolyline, LPolygon, 
 import { Icon } from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import 'leaflet-draw/dist/leaflet.draw.css'
-// set ElementUI lang to EN
-Vue.use(ElementUI, { locale })
-
-Vue.config.productionTip = false
 Vue.component('l-map', LMap)
 Vue.component('l-tile-layer', LTileLayer)
 Vue.component('l-marker', LMarker)
@@ -41,7 +37,6 @@ Vue.component('l-polygon', LPolygon)
 Vue.component('l-tooltip', LTooltip)
 // set ElementUI lang to EN
 Vue.use(ElementUI, { locale })
-
 Vue.config.productionTip = false
 
 delete Icon.Default.prototype._getIconUrl
@@ -51,7 +46,6 @@ Icon.Default.mergeOptions({
   iconUrl: require('leaflet/dist/images/marker-icon.png'),
   shadowUrl: require('leaflet/dist/images/marker-shadow.png')
 })
-
 new Vue({
   el: '#app',
   router,

@@ -96,7 +96,7 @@ export default {
     handleLogin() {
       webLogin({ loginName: this.loginForm.username, password: this.loginForm.password }).then(response => {
         if (response.reCode == 0) {
-          this.$router.push({ path: '/reTrack' })
+          this.$router.push({ path: '/dashboard' })
         } else {
           this.$message({
             type: 'error',
