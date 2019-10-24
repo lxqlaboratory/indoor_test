@@ -43,36 +43,149 @@ export const constantRoutes = [
     hidden: true
   },
   {
-    path: '/dashboard',
+    path: '/reTrack',
     component: Layout,
-    redirect: '/dashboard/dashboard',
+    redirect: '/reTrack/reTrack',
     children: [{
-      path: 'dashboard',
-      name: 'Dashboard',
-      component: () => import('@/views/dashboard/index'),
-      meta: { title: '系统通知', icon: 'dashboard', roles: ['100'] }
+      path: 'reTrack',
+      name: 'reTrack',
+      component: () => import('@/views/reTrack/index'),
+      meta: { title: '实时监控', icon: 'eye-open', roles: ['100'] }
     }]
   },
   {
-    path: '/personInfo',
+    path: '/traceReplay',
     component: Layout,
-    name: 'personInfo',
+    children: [
+      {
+        path: 'traceReplay',
+        name: 'traceReplay',
+        component: () => import('@/views/traceReplay/index'),
+        meta: { title: '轨迹回放', icon: 'Replay' }
+      }
+    ]
+  },
+  {
+    path: '/alarmRecord',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'alarmRecord',
+        component: () => import('@/views/alarmRecord/index'),
+        meta: { title: '报警记录', icon: 'alarm2' }
+      }
+    ]
+  },
+  {
+    path: '/dStates',
+    component: Layout,
     meta: {
-      title: '个人信息',
-      icon: 'example'
+      title: '设备状态',
+      icon: 'dStates'
     },
     children: [
       {
-        path: 'baseInformation',
-        name: 'baseInformation',
-        component: () => import('@/views/personInfo/baseInformation'),
-        meta: { title: '个人信息', icon: 'user', roles: ['100'] }
+        path: 'router',
+        component: () => import('@/views/dStates/router/index'),
+        name: 'router',
+        meta: {
+          title: '路由',
+          icon: 'router'
+        }
       },
       {
-        path: 'changepwd',
-        name: 'changepwd',
-        component: () => import('@/views/personInfo/changepwd'),
-        meta: { title: '修改密码', icon: 'password', roles: ['100'] }
+        path: 'card',
+        component: () => import('@/views/dStates/card/index'),
+        name: 'card',
+        meta: {
+          title: '标签',
+          icon: 'tag'
+        }
+      },
+      {
+        path: 'beacon',
+        component: () => import('@/views/dStates/beacon/index'),
+        name: 'beacon',
+        meta: {
+          title: '信标',
+          icon: 'dstate'
+        }
+      }
+    ]
+  },
+  {
+    path: '/electricFence',
+    component: Layout,
+    meta: {
+      title: '电子围栏',
+      icon: 'tree'
+    },
+    children: [
+      {
+        path: 'index',
+        name: 'index',
+        component: () => import('@/views/electricFence/index'),
+        meta: { title: '新增电子围栏', icon: 'password' }
+      },
+      {
+        path: 'Show',
+        name: 'Show',
+        component: () => import('@/views/electricFence/Show'),
+        meta: { title: '电子围栏展示', icon: 'show1' }
+      },
+      {
+        path: 'list',
+        name: 'list',
+        component: () => import('@/views/electricFence/list'),
+        meta: { title: '管理电子围栏', icon: 'list1' }
+      }
+    ]
+  },
+  {
+    path: '/analyseStat',
+    component: Layout,
+    meta: {
+      title: '分析统计',
+      icon: 'tree'
+    },
+    children: [
+      {
+        path: 'onlineStat',
+        component: () => import('@/views/analyseStat/onlineStat/index'),
+        name: 'OnlineStat',
+        meta: {
+          title: '在线统计',
+          icon: 'onlineStat'
+        },
+        children: [
+          {
+            path: 'table',
+            component: () => import('@/views/analyseStat/onlineStat/table/index'),
+            name: '表格',
+            meta: {
+              title: '表格',
+              icon: 'table'
+            }
+          },
+          {
+            path: 'chart',
+            component: () => import('@/views/analyseStat/onlineStat/chart/index'),
+            name: '图表',
+            meta: {
+              title: '图表',
+              icon: 'chart'
+            }
+          }
+        ]
+      },
+      {
+        path: 'areaAnalyse',
+        component: () => import('@/views/analyseStat/areaAnalyse/index'),
+        meta: {
+          title: '区域分析',
+          icon: 'areaAnalyse'
+        }
       }
     ]
   },

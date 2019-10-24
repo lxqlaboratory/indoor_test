@@ -15,8 +15,11 @@
     "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml"
   },
   "dependencies": {
+    "@types/leaflet": "^1.2.11",
     "axios": "0.18.1",
+    "echarts": "^4.4.0",
     "element-ui": "2.7.2",
+    "file-saver": "^2.0.2",
     "js-cookie": "2.2.0",
     "leaflet": "^1.5.1",
     "leaflet-draw": "^1.0.4",
@@ -27,7 +30,8 @@
     "vue": "2.6.10",
     "vue-router": "3.0.6",
     "vue2-leaflet": "^2.2.1",
-    "vuex": "3.1.0"
+    "vuex": "3.1.0",
+    "xlsx": "^0.15.1"
   },
   "devDependencies": {
     "@babel/core": "7.0.0",
