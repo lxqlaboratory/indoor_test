@@ -14,7 +14,7 @@ export function getElectricFenceInfo(data) {
     data
   })
 }
-export function saveElectricFence(mapId, status, capability, level, location) {
+export function saveElectricFence(mapId, status, capability, level, isin, location) {
   return request({
     url: '/func/web/saveElectricFence',
     method: 'post',
@@ -23,6 +23,7 @@ export function saveElectricFence(mapId, status, capability, level, location) {
       status,
       capability,
       level,
+      isin,
       location
     }
   })

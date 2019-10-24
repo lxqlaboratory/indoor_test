@@ -18,6 +18,10 @@
           <el-form-item label="等级:" prop="level">
             <el-input v-model="savelist.level" style="width: 80%" autocomplete="off" />
           </el-form-item>
+          <el-form-item label="围栏限制" prop="isin">
+            <el-radio v-model="savelist.isin" label="0">进</el-radio>
+            <el-radio v-model="savelist.isin" label="1">出</el-radio>
+          </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
           <el-button @click="dialogSaveFormVisible = false">取 消</el-button>
@@ -50,7 +54,8 @@ export default {
         status: '',
         capability: '',
         level: '',
-        location: ''
+        location: '',
+        isin:'0'
       },
       rules: {
         mapId: [
@@ -149,7 +154,8 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.dialogSaveFormVisible = false
-          saveElectricFence(this.savelist.mapId, this.savelist.status, this.savelist.capability, this.savelist.level, this.location).then(res => {
+          alert(this.savelist.isin)
+          saveElectricFence(this.savelist.mapId, this.savelist.status, this.savelist.capability, this.savelist.level, this.savelist.isin, this.location).then(res => {
             console.log(res)
             if (res.re === 1) {
               this.$refs[formName].resetFields()
