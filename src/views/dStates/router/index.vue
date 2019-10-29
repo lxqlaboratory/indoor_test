@@ -1,8 +1,8 @@
 <template>
   <div class="app-container">
-    <el-header height="60px" style="background-color: rgb(238, 241, 246) ;text-align: left; font-size: 12px;">
+    <el-header>
       <!--搜索框-->
-      <div style="width:250px; padding-bottom: 10px; float: left;">
+      <div class="search">
         <el-input
           v-model="filterText"
           placeholder="输入关键字"
@@ -12,14 +12,12 @@
           <el-button slot="append" icon="el-icon-refresh" @click=" empty" />
         </el-input>
       </div>
-      <div style="width:50px; padding-bottom: 10px; float: left;" />
-      <div style="width: 25%;float: left">
-        <el-button type="primary" round @click="openSave()">增加</el-button>
-      </div>
-      <div style="width: 5%;float: right">
+      <div class="export">
         <el-button type="primary" @click="exportExcel">导出<i class="el-icon-upload el-icon--right" /></el-button>
       </div>
-
+      <div class="add">
+        <el-button type="primary" round @click="openSave()">增加</el-button>
+      </div>
     </el-header>
     <el-table
       id="out-table"
@@ -30,7 +28,6 @@
       border
       fit
       highlight-current-row
-      style="margin-top:10px"
     >
       <el-table-column
         label="路由编号"
@@ -86,22 +83,22 @@
     </el-table>
     <!--编辑-->
     <div>
-      <el-dialog title="编辑" :visible.sync="dialogFormVisible" width="500px">
-        <el-form ref="editlist" :model="editlist" :rules="rules" label-position="left" label-width="140px" style="width: 430px; margin-left:50px;">
+      <el-dialog title="编辑" :visible.sync="dialogFormVisible" >
+        <el-form ref="editlist" :model="editlist" :rules="rules" label-position="left" label-width="100px" >
           <el-form-item label="路由编号:">
-            <el-input v-model="editlist.routerId" readonly="true" style="width: 80%" disabled="disabled" autocomplete="off" />
+            <el-input v-model="editlist.routerId" readonly="true" disabled="disabled" autocomplete="off" />
           </el-form-item>
           <el-form-item label="路由数量:" prop="routerNum">
-            <el-input v-model="editlist.routerNum" style="width: 80%" autocomplete="off" />
+            <el-input v-model="editlist.routerNum"  autocomplete="off" />
           </el-form-item>
           <el-form-item label="路由类型:" prop="routerType">
-            <el-input v-model="editlist.routerType" style="width: 80%" autocomplete="off" />
+            <el-input v-model="editlist.routerType"  autocomplete="off" />
           </el-form-item>
           <el-form-item label="路由状态:" prop="routerStatus">
-            <el-input v-model="editlist.routerStatus" style="width: 80%" autocomplete="off" />
+            <el-input v-model="editlist.routerStatus"  autocomplete="off" />
           </el-form-item>
           <el-form-item label="公司编号:" prop="companyId">
-            <el-input v-model="editlist.companyId" style="width: 80%" autocomplete="off" />
+            <el-input v-model="editlist.companyId"  autocomplete="off" />
           </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
@@ -112,19 +109,19 @@
     </div>
     <!--保存-->
     <div>
-      <el-dialog title="保存" :visible.sync="dialogSaveFormVisible" width="500px">
-        <el-form ref="savelist" :model="savelist" :rules="rules" label-position="left" label-width="140px" style="width: 430px; margin-left:50px;">
+      <el-dialog title="保存" :visible.sync="dialogSaveFormVisible" >
+        <el-form ref="savelist" :model="savelist" :rules="rules" label-position="left" label-width="100px">
           <el-form-item label="路由数量:" prop="routerNum">
-            <el-input v-model="savelist.routerNum" style="width: 80%" autocomplete="off" />
+            <el-input v-model="savelist.routerNum"  autocomplete="off" />
           </el-form-item>
           <el-form-item label="路由类型:" prop="routerType">
-            <el-input v-model="savelist.routerType" style="width: 80%" autocomplete="off" />
+            <el-input v-model="savelist.routerType"  autocomplete="off" />
           </el-form-item>
           <el-form-item label="路由状态:" prop="routerStatus">
-            <el-input v-model="savelist.routerStatus" style="width: 80%" autocomplete="off" />
+            <el-input v-model="savelist.routerStatus"  autocomplete="off" />
           </el-form-item>
           <el-form-item label="公司编号:" prop="companyId">
-            <el-input v-model="savelist.companyId" style="width: 80%" autocomplete="off" />
+            <el-input v-model="savelist.companyId"  autocomplete="off" />
           </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
@@ -134,7 +131,7 @@
       </el-dialog>
     </div>
     <!--分页-->
-    <div class="block" style="float: right">
+    <div class="block">
       <el-pagination
         :current-page="currentPage"
         :page-sizes="[10, 20, 50, 100]"

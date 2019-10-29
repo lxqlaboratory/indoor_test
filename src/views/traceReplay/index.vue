@@ -1,7 +1,7 @@
 <template xmlns:border-radius="">
   <div class="app-container">
     <el-container style="height: 100%;min-height:800px;" direction="vertical">
-      <el-header height="60px" style="background-color: rgb(238, 241, 246) ;text-align: right; font-size: 12px">
+      <el-header>
         <div style="width:250px; padding-bottom: 10px; float: left;">
           <el-input
             v-model="filterText"
@@ -34,8 +34,7 @@
           <el-button type="primary" icon="el-icon-view" circle @click="startTrace" />
         </div>
       </el-header>
-      <el-container>
-
+      <el-container >
         <el-aside>
           <div class="el-table-filter">
             <el-tree
@@ -51,9 +50,8 @@
               @node-click="handleNode"
             />
           </div>
-
         </el-aside>
-        <el-main>
+        <el-main style="margin-right: -19px">
           <l-map style="height: 100%; width: 100%" :options="{zoomControl: false}" :crs="crs">
             <l-image-overlay
               :url="mapsource"
@@ -263,8 +261,4 @@ export default {
 }
 </script>
 <style>
-  .el-table-filter {
-    max-height: 700px;
-    overflow: auto;
-  }
 </style>

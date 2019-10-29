@@ -55,7 +55,7 @@ export default {
         capability: '',
         level: '',
         location: '',
-        isin:'0'
+        isin: '0'
       },
       rules: {
         mapId: [

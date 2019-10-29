@@ -30,7 +30,7 @@
       border
       fit
       highlight-current-row
-      style="margin-top:10px"
+
     >
       <el-table-column
         label="编号"
@@ -95,22 +95,22 @@
     </el-table>
     <!--编辑-->
     <div>
-      <el-dialog title="编辑" :visible.sync="dialogFormVisible" width="500px">
-        <el-form ref="editlist" :model="editlist" :rules="rules" label-position="left" label-width="140px" style="width: 430px; margin-left:50px;">
+      <el-dialog title="编辑" :visible.sync="dialogFormVisible">
+        <el-form ref="editlist" :model="editlist" :rules="rules" label-position="left" label-width="120px">
           <el-form-item label="区域编号:">
-            <el-input v-model="editlist.fenceId" readonly="true" style="width: 80%" disabled="disabled" autocomplete="off" />
+            <el-input v-model="editlist.fenceId" readonly="true"  disabled="disabled" autocomplete="off" />
           </el-form-item>
           <el-form-item label="区域编号:" prop="mapId">
-            <el-input v-model="editlist.mapId" style="width: 80%" autocomplete="off"  />
+            <el-input v-model="editlist.mapId"  autocomplete="off"  />
           </el-form-item>
           <el-form-item label="区域状态:" prop="status">
-            <el-input v-model="editlist.status" style="width: 80%" autocomplete="off" />
+            <el-input v-model="editlist.status"  autocomplete="off" />
           </el-form-item>
           <el-form-item label="最大容纳人数:" prop="capability">
-            <el-input v-model="editlist.capability" style="width: 80%" autocomplete="off" />
+            <el-input v-model="editlist.capability" autocomplete="off" />
           </el-form-item>
           <el-form-item label="区域等级:" prop="level">
-            <el-input v-model="editlist.level" style="width: 80%" autocomplete="off" />
+            <el-input v-model="editlist.level"  autocomplete="off" />
           </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
@@ -120,7 +120,7 @@
       </el-dialog>
     </div>
     <!--分页-->
-    <div class="block" style="float: right">
+    <div class="block" >
       <el-pagination
         :current-page="currentPage"
         :page-sizes="[10, 20, 50, 100]"

@@ -32,7 +32,7 @@
 
 <script>
 import L from 'leaflet'
-import { getElectricFence } from '@/api/electricFence'
+import { getElectricFence } from '../../api/electricFence'
 export default {
   name: 'Show',
   data() {
@@ -56,7 +56,7 @@ export default {
   // mounted() {
   //
   // },
-  activated() {
+  created() {
     this.fetchData()
   },
   methods: {

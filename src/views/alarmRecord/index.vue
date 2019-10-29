@@ -1,8 +1,8 @@
 <template>
   <div class="app-container">
-    <el-header height="60px" style="background-color: rgb(238, 241, 246) ;text-align: left; font-size: 12px">
+    <el-header >
       <!--搜索框-->
-      <div style="width:20%; padding-bottom: 10px; float: left;margin-right: 5%">
+      <div class="search">
         <el-input
           v-model="filterText"
           placeholder="输入关键字"
@@ -12,17 +12,17 @@
           <el-button slot="append" icon="el-icon-refresh" @click=" empty" />
         </el-input>
       </div>
-      <div style="width: 40%; float: left;">
-        开始时间：
+      <div class="time">
+        开始时间:
         <el-date-picker v-model="createDate" type="datetime" value-format="yyyy-MM-dd HH:mm:ss" placeholder="选择日期时间" :picker-options="pickerOptionsStart" style="margin-right: 10px;" @change="startTimeStatus" />
         至
         <el-date-picker v-model="overDate" type="datetime" value-format="yyyy-MM-dd HH:mm:ss" placeholder="选择日期时间" :picker-options="pickerOptionsEnd" style="margin-left: 10px;" @change="endTimeStatus" />
       </div>
-      <div style="width: 25%;float: left">
-        <el-button type="primary" round @click="openSave()">增加</el-button>
-      </div>
-      <div style="width: 5%;float: right">
+      <div class="export">
         <el-button type="primary" @click="exportExcel">导出<i class="el-icon-upload el-icon--right" /></el-button>
+      </div>
+      <div class="add">
+        <el-button type="primary" round @click="openSave()">增加</el-button>
       </div>
     </el-header>
 
@@ -35,7 +35,7 @@
       border
       fit
       highlight-current-row
-      style="margin-top:10px"
+
     >
       <el-table-column
         label="警告编号"
@@ -100,16 +100,16 @@
     </el-table>
     <!--编辑-->
     <div>
-      <el-dialog title="编辑" :visible.sync="dialogFormVisible" width="500px">
-        <el-form ref="editlist" :model="editlist" :rules="rules" label-position="left" label-width="140px" style="width: 430px; margin-left:50px;">
+      <el-dialog title="编辑" :visible.sync="dialogFormVisible">
+        <el-form ref="editlist" :model="editlist" :rules="rules" label-position="left" label-width="100px">
           <el-form-item label="警告编号:">
-            <el-input v-model="editlist.alarmId" readonly="true" style="width: 80%" disabled="disabled" autocomplete="off" />
+            <el-input v-model="editlist.alarmId" readonly="true"  disabled="disabled" />
           </el-form-item>
-          <el-form-item label="卡片编号:" prop="cardId">
-            <el-input v-model="editlist.cardId" style="width: 80%" autocomplete="off" />
+          <el-form-item label="卡片编号:" prop="cardId" autocomplete="off" >
+            <el-input v-model="editlist.cardId" />
           </el-form-item>
           <el-form-item label="警告详情:" prop="alarmContent">
-            <el-input v-model="editlist.alarmContent" style="width: 80%" autocomplete="off" />
+            <el-input v-model="editlist.alarmContent" autocomplete="off" />
           </el-form-item>
           <el-form-item label="警告时间:" prop="alarmTime">
             <el-date-picker
@@ -118,14 +118,13 @@
               format="yyyy-MM-dd HH:mm:ss"
               value-format="yyyy-MM-dd HH:mm:ss"
               placeholder="选择时间"
-              style="width: 80%;"
             />
           </el-form-item>
           <el-form-item label="X轴坐标:" prop="X">
-            <el-input v-model="editlist.X" style="width: 80%" autocomplete="off" />
+            <el-input v-model="editlist.X"  autocomplete="off" />
           </el-form-item>
           <el-form-item label="Y轴坐标:" prop="Y">
-            <el-input v-model="editlist.Y" style="width: 80%" autocomplete="off" />
+            <el-input v-model="editlist.Y"  autocomplete="off" />
           </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
@@ -136,13 +135,13 @@
     </div>
     <!--保存-->
     <div>
-      <el-dialog title="保存" :visible.sync="dialogSaveFormVisible" width="500px">
-        <el-form ref="savelist" :model="savelist" :rules="rules" label-position="left" label-width="140px" style="width: 430px; margin-left:50px;">
+      <el-dialog title="保存" :visible.sync="dialogSaveFormVisible" >
+        <el-form ref="savelist" :model="savelist" :rules="rules" label-position="left" label-width="100px" >
           <el-form-item label="卡片编号:" prop="cardId">
-            <el-input v-model="savelist.cardId" style="width: 80%" autocomplete="off" />
+            <el-input v-model="savelist.cardId"  autocomplete="off" />
           </el-form-item>
           <el-form-item label="警告详情:" prop="alarmContent">
-            <el-input v-model="savelist.alarmContent" style="width: 80%" autocomplete="off" />
+            <el-input v-model="savelist.alarmContent"  autocomplete="off" />
           </el-form-item>
           <el-form-item label="警告时间:" prop="alarmTime">
             <el-date-picker
@@ -151,14 +150,13 @@
               format="yyyy-MM-dd HH:mm:ss"
               value-format="yyyy-MM-dd HH:mm:ss"
               placeholder="选择时间"
-              style="width: 80%;"
             />
           </el-form-item>
           <el-form-item label="X轴坐标:" prop="X">
-            <el-input v-model="savelist.X" style="width: 80%" autocomplete="off" />
+            <el-input v-model="savelist.X" autocomplete="off" />
           </el-form-item>
           <el-form-item label="Y轴坐标:" prop="Y">
-            <el-input v-model="savelist.Y" style="width: 80%" autocomplete="off" />
+            <el-input v-model="savelist.Y"  autocomplete="off" />
           </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
@@ -169,7 +167,7 @@
     </div>
 
     <!--分页-->
-    <div class="block" style="float: right">
+    <div class="block">
       <el-pagination
         :current-page="currentPage"
         :page-sizes="[10, 20, 50, 100]"
@@ -436,4 +434,6 @@ export default {
   }
 }
 </script>
+<style>
 
+</style>

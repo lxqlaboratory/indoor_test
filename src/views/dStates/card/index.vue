@@ -1,8 +1,8 @@
 <template>
   <div class="app-container">
-    <el-header height="60px" style="background-color: rgb(238, 241, 246) ;text-align: left; font-size: 12px;">
+    <el-header>
       <!--搜索框-->
-      <div style="width:250px; padding-bottom: 10px; float: left;">
+      <div class="search">
         <el-input
           v-model="filterText"
           placeholder="输入关键字"
@@ -12,12 +12,11 @@
           <el-button slot="append" icon="el-icon-refresh" @click=" empty" />
         </el-input>
       </div>
-      <div style="width:50px; padding-bottom: 10px; float: left;" />
-      <div style="width: 25%;float: left">
-        <el-button type="primary" round @click="openSave()">增加</el-button>
-      </div>
-      <div style="width: 5%;float: right">
+      <div class="export">
         <el-button type="primary" @click="exportExcel">导出<i class="el-icon-upload el-icon--right" /></el-button>
+      </div>
+      <div class="add">
+        <el-button type="primary" round @click="openSave()">增加</el-button>
       </div>
     </el-header>
     <el-table
@@ -29,7 +28,6 @@
       border
       fit
       highlight-current-row
-      style="margin-top:10px"
     >
       <el-table-column
         label="标签编号"
@@ -88,25 +86,25 @@
     </el-table>
     <!--编辑-->
     <div>
-      <el-dialog title="编辑" :visible.sync="dialogFormVisible" width="500px">
-        <el-form ref="editlist" :model="editlist" :rules="rules" label-position="left" label-width="140px" style="width: 430px; margin-left:50px;">
+      <el-dialog title="编辑" :visible.sync="dialogFormVisible">
+        <el-form ref="editlist" :model="editlist" :rules="rules" label-position="left" label-width="100px">
           <el-form-item label="标签编号:">
             <el-input v-model="editlist.cardId" readonly="true" style="width: 80%" disabled="disabled" autocomplete="off" />
           </el-form-item>
           <el-form-item label="人员编号:" prop="personId">
-            <el-input v-model="editlist.personId" style="width: 80%" autocomplete="off" />
+            <el-input v-model="editlist.personId" autocomplete="off" />
           </el-form-item>
           <el-form-item label="标签数量:" prop="cardNum">
-            <el-input v-model="editlist.cardNum" style="width: 80%" autocomplete="off" />
+            <el-input v-model="editlist.cardNum" autocomplete="off" />
           </el-form-item>
           <el-form-item label="标签类型:" prop="cardType">
-            <el-input v-model="editlist.cardType" style="width: 80%" autocomplete="off" />
+            <el-input v-model="editlist.cardType" autocomplete="off" />
           </el-form-item>
           <el-form-item label="标签状态:" prop="cardStatus">
-            <el-input v-model="editlist.cardStatus" style="width: 80%" autocomplete="off" />
+            <el-input v-model="editlist.cardStatus" autocomplete="off" />
           </el-form-item>
           <el-form-item label="公司编号:" prop="companyId">
-            <el-input v-model="editlist.companyId" style="width: 80%" autocomplete="off" />
+            <el-input v-model="editlist.companyId" autocomplete="off" />
           </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
@@ -117,22 +115,22 @@
     </div>
     <!--保存-->
     <div>
-      <el-dialog title="保存" :visible.sync="dialogSaveFormVisible" width="500px">
-        <el-form ref="savelist" :model="savelist" :rules="rules" label-position="left" label-width="140px" style="width: 430px; margin-left:50px;">
+      <el-dialog title="保存" :visible.sync="dialogSaveFormVisible">
+        <el-form ref="savelist" :model="savelist" :rules="rules" label-position="left" label-width="100px">
           <el-form-item label="人员编号:" prop="personId">
-            <el-input v-model="savelist.personId" style="width: 80%" autocomplete="off" />
+            <el-input v-model="savelist.personId"  autocomplete="off" />
           </el-form-item>
           <el-form-item label="标签数量:" prop="cardNum">
-            <el-input v-model="savelist.cardNum" style="width: 80%" autocomplete="off" />
+            <el-input v-model="savelist.cardNum"  autocomplete="off" />
           </el-form-item>
           <el-form-item label="标签类型:" prop="cardType">
-            <el-input v-model="savelist.cardType" style="width: 80%" autocomplete="off" />
+            <el-input v-model="savelist.cardType"  autocomplete="off" />
           </el-form-item>
           <el-form-item label="标签状态:" prop="cardStatus">
-            <el-input v-model="savelist.cardStatus" style="width: 80%" autocomplete="off" />
+            <el-input v-model="savelist.cardStatus"  autocomplete="off" />
           </el-form-item>
           <el-form-item label="公司编号:" prop="companyId">
-            <el-input v-model="savelist.companyId" style="width: 80%" autocomplete="off" />
+            <el-input v-model="savelist.companyId"  autocomplete="off" />
           </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
@@ -142,7 +140,7 @@
       </el-dialog>
     </div>
     <!--分页-->
-    <div class="block" style="float: right">
+    <div class="block" >
       <el-pagination
         :current-page="currentPage"
         :page-sizes="[10, 20, 50, 100]"
@@ -373,5 +371,3 @@ export default {
 }
 
 </script>
-<style>
-</style>
