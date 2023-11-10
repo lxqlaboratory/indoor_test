@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@types/leaflet": "^1.2.11",
-    "axios": "0.18.1",
+    "axios": "1.6.0",
     "echarts": "^4.4.0",
     "element-ui": "2.7.2",
     "file-saver": "^2.0.2",
